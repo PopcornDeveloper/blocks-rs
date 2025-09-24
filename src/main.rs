@@ -5,6 +5,10 @@ use std::io::{self, Write};
 use std::thread;
 use std::time::Duration;
 
+fn create_tetromino() {
+    println!("does nothing lol");
+}
+
 fn type_of<T>(_: T) -> &'static str {
     type_name::<T>()
 }
@@ -15,7 +19,9 @@ fn main() {
 
     let args: Vec<String> = env::args().collect();
 
-    let mut delay = 10; // in ms
+    let mut tetris = false;
+
+    let mut delay = 25; // in ms
 
     for (index, arg) in args.iter().enumerate() {
         if arg == "-h" || arg == "--help" {
@@ -67,7 +73,9 @@ fn main() {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 17
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 18
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 19
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 20 (Ignore)
+        0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, // 20 (Ignore)
+           //  0  1  2  3  4  5  6  7  8  9
     ];
     /*
      * Alright so we got the array here, right?
@@ -81,9 +89,7 @@ fn main() {
             for col_rev in 0..columns {
                 let index = row_rev * columns + col_rev;
                 if revArray[index] == 3 {
-                    // Check if it's at the bottom or if the block below is occupied by a stationary block
                     if index < 10 || (revArray[index - 10] != 0) {
-                        // Stop the tetromino from moving down
                         revArray[index] = 2; // Change to a stationary block
                     } else {
                         // Move the tetromino down
@@ -142,7 +148,7 @@ fn main() {
                         ];
                     } else {
                         if current_type == "thicc" {
-                            print!("[*]")
+                            print!("[2]")
                         } else if current_type == "thin" {
                             print!("#")
                         } else if current_type == "sus" {
@@ -155,7 +161,7 @@ fn main() {
                     }
                 } else if tetrisArray[index] == 3 || tetrisArray[index] == 2 {
                     if current_type == "thicc" {
-                        print!("[*]")
+                        print!("[3]")
                     } else if current_type == "thin" {
                         print!("#")
                     } else if current_type == "sus" {

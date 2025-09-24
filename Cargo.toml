@@ -1,5 +1,5 @@
 [package]
-name = "gitaumate"
+name = "blocks-rs"
 version = "0.1.0"
 edition = "2024"
 
