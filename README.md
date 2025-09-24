@@ -1,4 +1,9 @@
 # blocks-rs
 Rice script where blocks fall from the top like tetris
 
-I know it's stupid but I don't want to change the project name. it was originally a github automation rust script lol
+to use on arch linux
+```
+sudo pacman -S rust git #if you dont have either
+git clone https://github.com/PopcornDeveloper/blocks-rs.git
+cargo build blocks-rs
+```
